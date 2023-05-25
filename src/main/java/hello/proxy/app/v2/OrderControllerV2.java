@@ -28,12 +28,12 @@ public class OrderControllerV2 {
         return "ok";
     };
 
-/*    public String request(String itemId) {
-        orderService.orderItem(itemId);
-        return "ok";
-    }
-
-    public String noLog() {
-        return "ok";
-    }*/
+//    public String request(String itemId) {
+//        orderService.orderItem(itemId);
+//        return "ok";
+//    }
+//
+//    public String noLog() {
+//        return "ok";
+//    }
 }
