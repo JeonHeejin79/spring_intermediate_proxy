@@ -1,27 +1,33 @@
-package hello.proxy.config.v_proxy.interface_proxy;
+package hello.proxy.config.v1_proxy.interface_proxy;
 
 import hello.proxy.app.v1.OrderControllerV1;
-import hello.proxy.app.v1.OrderServiceV1;
 import hello.proxy.trace.TraceStatus;
 import hello.proxy.trace.logtrace.LogTrace;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class OrderServiceInterfaceProxy implements OrderServiceV1 {
+public class OrderControllerInterfaceProxy implements OrderControllerV1 {
 
-    private final OrderServiceV1 target;
+    private final OrderControllerV1 target;
     private final LogTrace logTrace;
 
     @Override
-    public void orderItem(String itemId) {
+    public String request(String itemId) {
         TraceStatus status = null;
+
         try {
-            status = logTrace.begin("OrderService.orderItem()");
-            target.orderItem(itemId);
+            status = logTrace.begin("OrderController.request()");
+            String result = target.request(itemId);
             logTrace.end(status);
+            return result;
         } catch (Exception e) {
             logTrace.exception(status, e);
             throw e;
         }
+    }
+
+    @Override
+    public String noLog() {
+        return target.noLog();
     }
 }
