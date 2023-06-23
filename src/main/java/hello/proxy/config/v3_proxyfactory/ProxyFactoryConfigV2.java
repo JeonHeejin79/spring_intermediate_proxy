@@ -24,9 +24,7 @@ public class ProxyFactoryConfigV2 {
         proxyFactory.addAdvisor(getAdvisor(logTrace));
 
         OrderControllerV2 proxy = (OrderControllerV2) proxyFactory.getProxy();
-
         log.info("ProxyFactory proxy={}, target={}", proxy.getClass(), orderController.getClass());
-
         return proxy;
     }
 
@@ -40,7 +38,6 @@ public class ProxyFactoryConfigV2 {
 
         OrderServiceV2 proxy = (OrderServiceV2) proxyFactory.getProxy();
         log.info("ProxyFactory proxy={}, target={}", proxy.getClass(), orderService.getClass());
-
         return proxy;
     }
 

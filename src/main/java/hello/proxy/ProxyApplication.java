@@ -1,10 +1,6 @@
 package hello.proxy;
 
-import hello.proxy.config.v1_proxy.ConcreteProxyConfig;
-import hello.proxy.config.v2_dynamicproxy.DynamicProxyBasicConfig;
-import hello.proxy.config.v2_dynamicproxy.DynamicProxyFilterConfig;
-import hello.proxy.config.v3_proxyfactory.ProxyFactoryConfigV1;
-import hello.proxy.config.v3_proxyfactory.ProxyFactoryConfigV2;
+import hello.proxy.config.v6_aop.AopConfig;
 import hello.proxy.trace.logtrace.LogTrace;
 import hello.proxy.trace.logtrace.ThreadLocalLogTrace;
 import org.springframework.boot.SpringApplication;
@@ -17,9 +13,12 @@ import org.springframework.context.annotation.Import;
 // @Import(InterfaceProxyConfig.class) // AppV2Config 을 스프링빈에 등록된다.
 // @Import(ConcreteProxyConfig.class) // AppV2Config 을 스프링빈에 등록된다.
 // @Import(DynamicProxyBasicConfig.class) // AppV2Config 을 스프링빈에 등록된다.
-//@Import(DynamicProxyFilterConfig.class) // AppV2Config 을 스프링빈에 등록된다.
-@Import(ProxyFactoryConfigV1.class) // AppV2Config 을 스프링빈에 등록된다.
-//@Import(ProxyFactoryConfigV2.class) // AppV2Config 을 스프링빈에 등록된다.
+// @Import(DynamicProxyFilterConfig.class) // AppV2Config 을 스프링빈에 등록된다.
+// @Import(ProxyFactoryConfigV1.class) // ProxyFactoryConfigV1 을 스프링빈에 등록된다.
+// @Import(ProxyFactoryConfigV2.class) // ProxyFactoryConfigV2 을 스프링빈에 등록된다.
+// @Import(BeanPostProcessorConfig.class) // BeanPostProcessorConfig 을 스프링빈에 등록된다.
+//@Import(AutoProxyConfig.class) // AutoProxyConfig 을 스프링빈에 등록된다.
+@Import(AopConfig.class) // AutoProxyConfig 을 스프링빈에 등록된다.
 @SpringBootApplication(scanBasePackages = "hello.proxy.app") // !주의 app 하위 에있는것만 스캔대상이 됨
 public class ProxyApplication {
 
